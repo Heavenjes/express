@@ -19,7 +19,7 @@ app.post('/user', (req, res) => {
     });
 })
 
-app.get('/db/retrieve/:username', (req, res) => {
+app.post('/db/retrieve/:username/:email/:password', (req, res) => {
 //     var connection = mysql.createConnection({
 //         host: 'localhost',
 //         user: 'root',
@@ -52,7 +52,7 @@ var connection = mysql.createConnection({
 
 connection.connect()
 
-connection.query(`INSERT INTO users (username, email, password) VALUES('${req.params.username}','${req.params.email}','${req.params.password}') `, function (err, rows, fields) {
+connection.query(`INSERT INTO myapp (username, email, password) VALUES('${req.params.username}','${req.params.email}','${req.params.password}') `, function (err, rows, fields) {
     if (err) throw err
     res.json({
         data: rows,
